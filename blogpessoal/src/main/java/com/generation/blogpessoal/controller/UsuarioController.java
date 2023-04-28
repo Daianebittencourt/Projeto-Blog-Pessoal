@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.generation.blogpessoal.model.UsuarioLogin;
 import com.generation.blogpessoal.model.Usuario;
+import com.generation.blogpessoal.model.UsuarioLogin;
 import com.generation.blogpessoal.repository.UsuarioRepository;
 import com.generation.blogpessoal.service.UsuarioService;
 
@@ -64,4 +64,14 @@ public class UsuarioController {
 			.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 
 	}
+	
+	@PutMapping("/atualizar")
+	public ResponseEntity<Usuario> putUsuario(@Valid @RequestBody Usuario usuario) {
+		
+		return usuarioService.atualizarUsuario(usuario)
+			.map(resposta -> ResponseEntity.status(HttpStatus.OK).body(resposta))
+			.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+		
+	}
+
 }
