@@ -28,7 +28,7 @@ private Long id;
 private String titulo;
 
 @NotBlank(message = "O texto é obrigatório!")
-@Size(min=10, max=1000, message="O texto deve conter no mínimo 10 eno máximo 1000 caracteres. ")
+@Size(min=5, max=1000, message="O texto deve conter no mínimo 10 eno máximo 1000 caracteres. ")
 private String texto;
 
 @UpdateTimestamp
